@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>jackpiro</title>
+    <title>Narutinho</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,7 +20,7 @@
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="images/naruto.ico" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
@@ -49,20 +49,16 @@
                             <div class="full">
                                 <div class="center-desk">
                                     <div class="logo">
-                                        <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                        <a href="index.html"><img src="images/Naruto-logo.jpg" alt="#" /></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                            
-                                        <ul class="top_icon">
-                                            <li class="button_login"> <a href="#">Login</a> </li>
-                                            <li> <a href="#about">Signup</a> </li>
-                                            <li class="mean-last">
-                                             <a href="#"><img src="images/search_icon.png" alt="#" /></a>
-                                            </li>
-                                        </ul>
+                            <ul class="top_icon">
+                                <li class="button_login"> <a href="#">Login</a> </li>
+                                <li> <button class="btn btn-primary" style="padding: 5px;" data-toggle="modal" data-target="#modalCadastrar">Cadastrar</button> </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -98,13 +94,6 @@
                                     <a href="#">download</a>
                                 </div>
                             </div>
-                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
-                                <div class="text-img">
-                                   <figure><img src="images/img.png" alt="#"/></figure>
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -398,6 +387,41 @@
                     <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
                 </div>
             </div>
+            <!-- Modal Cadastrar -->
+            <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color:rgb(23, 23, 70);">
+                      <h5 class="modal-title" id="modalCadastrarLabel">Cadastrar</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white;">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" style="background-color:rgb(38, 38, 100)">
+                        <div class="col-md-12" style="color: white;">
+                            <strong><label for="nome">Nome</label></strong>
+                            <input class="form-control" type="text" id="nome">
+                            <strong><label for="sobrenome">Sobrenome</label></strong>
+                            <input class="form-control" type="text" id="sobrenome">
+                            <strong><label for="email">Email</label></strong>
+                            <input class="form-control" type="text" id="email">
+
+                            <strong><label for="login">Login</label></strong>
+                            <input class="form-control" type="text" id="login">
+                            <strong><label for="senha">Senha</label></strong>
+                            <input class="form-control" type="text" id="senha">
+                            <strong><label for="confirmarSenha">Confirmar Senha</label></strong>
+                            <input class="form-control" type="text" id="confirmarSenha">
+                        </div>       
+                    </div>
+                    <div class="modal-footer" style="background-color:rgb(23, 23, 70)">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Fim Modal -->
         </div>
     </footr>
     <!-- end footer -->
@@ -411,7 +435,8 @@
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
+    <!-- JS PAGE -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>
