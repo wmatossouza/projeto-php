@@ -52,23 +52,13 @@ function cadastrar(){
         data: dataPost,
         dataType: "json",
         success: function (response) {
-            // var html = '';
-            // $.each(response, function (index, val) { 
-            //     html += '<tr>'+
-            //                 '<td>' + val.id + '</td>'+
-            //                 '<td>' + val.nome + '</td>'+
-            //                 '<td>' + val.endereco + '</td>'+
-            //                 '<td>' + val. telefone + '</td>'+
-            //                 '<td>' + val.email + '</td>'+
-            //                 '<td>' + val.sexo + '</td>'+
-            //                 '<td width=250>'+
-            //                     '<a class="btn btn-primary">Info</a>'+
-            //                     '<a class="btn btn-warning">Atualizar</a>'+
-            //                     '<a class="btn btn-danger">Excluir</a>'+
-            //                 '</td>'+
-            //             '</tr>'    
-            // });
-            // $("#tabela").html(html);
+            if (response == "senhaDiferente"){
+                alert('A senha de confirmação é diferente da senha informada!');
+            }else if(response == "campoVazio"){
+                alert('Existem campos obrigatórios que não foram preenchidos!');
+            }else if(response == "OK"){
+                alert('Cadastro realizado com Sucesso!');
+            }
         }
     });
 }
