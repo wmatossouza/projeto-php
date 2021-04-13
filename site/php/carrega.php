@@ -9,7 +9,7 @@ if($id == 'teste'){
 function carregaTela(){
     $pdo = Banco::conectar();
 
-    $sql = 'SELECT * FROM phprs.pessoa ORDER BY id DESC';
+    $sql = 'SELECT * FROM phprs.usuarios ORDER BY id DESC';
     $q = $pdo->query($sql);
     $data = $q->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($data);

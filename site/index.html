@@ -56,15 +56,23 @@
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
                             <ul class="top_icon">
-                                <li class="button_login"> <a href="#">Login</a> </li>
-                                <li> <button class="btn btn-primary" style="padding: 5px;" data-toggle="modal" data-target="#modalCadastrar">Cadastrar</button> </li>
+                                <li id="liLogin">
+                                    <img src="images/load.gif" style="width: 25px;height: 25px; display: none;" id="loadLogin">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" id="loginUser" class="form-control" placeholder="Login"  aria-describedby="basic-addon2">
+                                        <input type="password" id="senhaUser" class="form-control" placeholder="Senha" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-danger" onclick="login()">Login</button> 
+                                        </div>
+                                    </div>  
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end header inner -->
-
+           
             <!-- end header -->
             <section class="slider_section">
                 <div class="banner_main">
@@ -80,7 +88,7 @@
                                             <li> <a href="#software">Software</a> </li>
                                             <li> <a href="#about">About</a> </li>
                                             <li> <a href="#testimonial">Testimonial</a> </li>
-                                            <li> <a href="#contact">Contact</a> </li>
+                                            <li> <a href="#cadastrar">Cadastrar</a> </li>
                                            
                                         </ul>
                                     </nav>
@@ -275,33 +283,40 @@
 
     <!-- end testimonial -->
 
-    <!-- contact -->
-    <div id="contact" class="contact">
+    <!-- cadastrar -->
+    <div id="cadastrar" class="contact">
         <div class="container">
 
             <div class="row">
-
                 <div class="col-md-12">
-
-                    <form class="contact_bg">
+                    <div class="contact_bg">
+                        <div class="row" id="loadCadastrar" style="margin-bottom:10px;display: none;">
+                            <img src="images/load.gif">
+                        </div>
                         <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <input class="contactus" placeholder="Name" type="text" name="Name">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <input class="contactus" placeholder="Nome" type="text" id="nome">
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <input class="contactus" placeholder="Phone" type="text" name="Email">
+                                <input class="contactus" placeholder="Login" type="text" id="login">
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <input class="contactus" placeholder="Email" type="text" name="Email">
+                                <input class="contactus" placeholder="Sobrenome" type="text" id="sobrenome">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <input class="textarea" placeholder="Senha" type="password" id="senha">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <input class="contactus" placeholder="Email" type="text" id="email">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <input class="textarea" placeholder="Confirmar Senha" type="password" id="confirmarSenha">
                             </div>
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <button class="send">Send</button>
+                                <button class="send" onclick="cadastrar()">Cadastrar</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
 
@@ -387,36 +402,30 @@
                     <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
                 </div>
             </div>
-            <!-- Modal Cadastrar -->
-            <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal AlterarSenha -->
+            <div class="modal fade" id="modalAlterarSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header" style="background-color:rgb(23, 23, 70);">
-                      <h5 class="modal-title" id="modalCadastrarLabel">Cadastrar</h5>
+                      <h5 class="modal-title">Alterar Senha</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="color: white;">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body" style="background-color:rgb(38, 38, 100)">
                         <div class="col-md-12" style="color: white;">
-                            <strong><label for="nome">Nome</label></strong>
-                            <input class="form-control" type="text" id="nome">
-                            <strong><label for="sobrenome">Sobrenome</label></strong>
-                            <input class="form-control" type="text" id="sobrenome">
-                            <strong><label for="email">Email</label></strong>
-                            <input class="form-control" type="text" id="email">
-
-                            <strong><label for="login">Login</label></strong>
-                            <input class="form-control" type="text" id="login">
-                            <strong><label for="senha">Senha</label></strong>
-                            <input class="form-control" type="text" id="senha">
-                            <strong><label for="confirmarSenha">Confirmar Senha</label></strong>
-                            <input class="form-control" type="text" id="confirmarSenha">
+                            <strong><label for="senhaAtual">Senha Atual</label></strong>
+                            <input class="form-control" type="password" id="senhaAtual">
+                            <strong><label for="novaSenha">Nova Senha</label></strong>
+                            <input class="form-control" type="password" id="novaSenha">
+                            <strong><label for="confirmarNovaSenha">Confirmar Nova senha</label></strong>
+                            <input class="form-control" type="password" id="confirmarNovaSenha">  
                         </div>       
                     </div>
                     <div class="modal-footer" style="background-color:rgb(23, 23, 70)">
+                        <img src="images/load.gif" style="width: 40px; height: 40px;display: none;" id="loadAlterarSenha">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                      <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar</button>
+                      <button type="button" class="btn btn-primary" onclick="alterarSenha()">Alterar</button>
                     </div>
                   </div>
                 </div>
@@ -435,6 +444,8 @@
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <!-- NOTY -->
+    <script src="js/jquery.noty.packaged.min.js"></script>
     <!-- JS PAGE -->
     <script src="js/index.js"></script>
 </body>

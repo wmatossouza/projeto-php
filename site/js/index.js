@@ -1,42 +1,13 @@
 $(document).ready(function () {
-    carregaTabela()
+    var usuarioLogado = sessionStorage.getItem('usuario');
+    if (usuarioLogado != ''){
+        adicionaSessao(usuarioLogado);
+    }
+
 });
 
-function carregaTabela(){
-    $.ajax({
-        type: "GET",
-        url: "/php/carrega.php?acao=teste",
-        dataType: "json",
-        success: function (response) {
-            var html = '';
-            $.each(response, function (index, val) { 
-                html += '<tr>'+
-                            '<td>' + val.id + '</td>'+
-                            '<td>' + val.nome + '</td>'+
-                            '<td>' + val.endereco + '</td>'+
-                            '<td>' + val. telefone + '</td>'+
-                            '<td>' + val.email + '</td>'+
-                            '<td>' + val.sexo + '</td>'+
-                            '<td width=250>'+
-                                '<a class="btn btn-primary">Info</a>'+
-                                '<a class="btn btn-warning">Atualizar</a>'+
-                                '<a class="btn btn-danger">Excluir</a>'+
-                            '</td>'+
-                        '</tr>'    
-            });
-            $("#tabela").html(html);
-        }
-    });
-}
-
 function cadastrar(){
-    var nome = $("#nome").val();
-    var sobrenome = $("#sobrenome").val();
-    var email = $("#email").val();
-    var login = $("#login").val();
-    var senha = $("#senha").val();
-    var confirmarSenha = $("#confirmarSenha").val();
-
+    $("#loadCadastrar").show();
     var dataPost = {
         nome : $("#nome").val(),
         sobrenome : $("#sobrenome").val(),
@@ -53,12 +24,125 @@ function cadastrar(){
         dataType: "json",
         success: function (response) {
             if (response == "senhaDiferente"){
-                alert('A senha de confirmação é diferente da senha informada!');
+                msgNoty('A senha de confirmação é diferente da senha informada!','warning');
             }else if(response == "campoVazio"){
-                alert('Existem campos obrigatórios que não foram preenchidos!');
+                msgNoty('Existem campos obrigatórios que não foram preenchidos!','warning');
             }else if(response == "OK"){
-                alert('Cadastro realizado com Sucesso!');
+                msgNoty('Cadastro realizado com Sucesso!','success');
+                limparCampos();
+            }else if(response == "jaExiste"){
+                msgNoty('Atenção, este usuário de login ja existe!','error');
+                $("#login").focus();
+            }
+            $("#loadCadastrar").hide();
+        }
+    });
+}
+
+function alterarSenha(){
+    $("#loadAlterarSenha").show();
+    var dataPost = {
+        senhaAtual : $("#senhaAtual").val(),
+        novaSenha : $("#novaSenha").val(),
+        confirmarNovaSenha : $("#confirmarNovaSenha").val()
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/php/index.php?acao=alterarSenha",
+        data: dataPost,
+        dataType: "json",
+        success: function (response) {
+            if(response == "OK"){
+                $("#loadAlterarSenha").hide();
+                msgNoty('Senha alterada com Sucesso!','success');
+                limparCampos();
+            }else if(response == "senhaDiferente"){
+                msgNoty('A senha de confirmação é diferente da nova senha informada!','warning');
             }
         }
     });
+
+}
+
+function login(){
+    $("#loadLogin").show();
+    if( $("#loginUser").val() == '' || $("#senhaUser").val() == ''){
+        msgNoty('Forneça usuário e a senha para logar!','warning');
+        $("#loadLogin").hide();
+        return;
+    }
+    var dataPost = {
+        login : $("#loginUser").val(),
+        senha : $("#senhaUser").val()
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/php/index.php?acao=login",
+        data: dataPost,
+        dataType: "json",
+        success: function (response) {
+            if (response[0] == "ok"){
+                msgNoty('Login realizado com sucesso!','success');
+                sessionStorage.setItem('usuario', response[1]);
+                adicionaSessao(response[1]);
+            }else{
+                msgNoty('Usuário e senha não encontrados!','error');
+                $("#loadLogin").hide();
+            }
+        }
+    });
+}
+
+function adicionaSessao(usuario){
+    if(usuario){
+        $("#liLogin").html(' <div id="divLogin"> '+
+                                '<button class="btn btn-info btn-sm" id="usuarioLogado" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">' + usuario + '</button>'+
+                            '</div>'+
+                            ' <div class="row pull-right" style="margin-top: 5px;">'+
+                                '<div class="collapse" id="collapse">'+
+                                    '<div class="card card-body" style="background-color:rgb(38, 38, 100)">'+
+                                    '<button class="btn btn-warning btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#modalAlterarSenha">Alterar Senha</button>'+
+                                    '<button class="btn btn-danger btn-sm" style="margin-top: 5px;" onclick="deslogar()">Deslogar</button>'+
+                                    '<button class="btn btn-primary btn-sm" style="margin-top: 5px;">Visualizar Ranking</button>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>');
+    }                    
+}
+
+function deslogar(){
+    sessionStorage.setItem('usuario', '');
+    $("#liLogin").html('<div class="input-group input-group-sm mb-3">'+
+                    '<input type="text" id="loginUser" class="form-control" placeholder="Login"  aria-describedby="basic-addon2">'+
+                    '<input type="password" id="senhaUser" class="form-control" placeholder="Senha" aria-describedby="basic-addon2">'+
+                    '<div class="input-group-append">'+
+                        '<button class="btn btn-danger" onclick="login()">Login</button>'+
+                    '</div>'+
+                '</div>');
+}
+
+function limparCampos(){
+    $("#nome").val('');
+    $("#sobrenome").val('');
+    $("#email").val('');
+    $("#login").val('');
+    $("#senha").val('');
+    $("#confirmarSenha").val('');
+    $("#senhaAtual").val('');
+    $("#novaSenha").val('');
+    $("#confirmarNovaSenha").val('');
+}
+
+function msgNoty(msg, tipo, tempo, layout){
+    if (tempo == undefined){
+        tempo = 4000;
+    }
+    noty({
+        text: msg, 
+        type: tipo, 
+        timeout: tempo, 
+        layout: layout
+    });	
 }
