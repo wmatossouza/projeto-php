@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" id="game">
                             <ul class="top_icon">
                                 <li id="liLogin">
                                     <img src="images/load.gif" style="width: 25px;height: 25px; display: none;" id="loadLogin">
@@ -88,7 +88,7 @@
                                             <li> <a href="#games">Sobre</a> </li>
                                             <li> <a href="#requisitos">Requisitos</a> </li>
                                             <li> <a href="#preview">Prévia do jogo</a> </li>
-                                            <li> <a href="#testimonial">Testimonial</a> </li>
+                                            <li> <a href="#ranking">Ranking</a> </li>
                                             <li> <a href="#cadastrar">Cadastrar</a> </li>
                                            
                                         </ul>
@@ -234,8 +234,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="about-box">
-                        <figure><img src="images/about.jpg" alt="#" /></figure>
-
+                        <!-- <figure><img src="images/about.jpg" alt="#" /></figure> -->
+                        <video controls autoplay style="max-width: 720;max-height: 480px;">
+                            <source src="video/jogo.mp4" type="video/mp4" >
+                          Your browser does not support the video tag.
+                          </video>
                         <p> Derrote seus oponentes.
                             <br> Mostre quem será o melhor ninja.</p>
                     </div>
@@ -246,41 +249,61 @@
     </div>
     <!-- end abouts -->
 
-    <!-- testimonial -->
-    <div id="testimonial" class="testimonial">
+    <!-- ranking -->
+    <div id="ranking" class="testimonial">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>Testimonial</h2>
+                        <h2>Top 5 Ranking</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 offset-md-2">
-                    <div class="row box">
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <div class="testimonial_box">
-                                <figure><img src="images/test1.png" alt="#" /></figure>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                            <div class="testimonial_box">
-                                <figure><img src="images/test2.png" alt="#" /></figure>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                            <div class="testimonial_box">
-                                <figure><img src="images/test3.png" alt="#" /></figure>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clients_box">
-                        <h3>Jecoo</h3>
-                        <p>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                            <br>aliqua. Ut enim ad minim veniam, quis
-                            <br>nostrud exercitation ullamco</p>
-
+                    <div class="row">
+                        <table class="table table-striped table-dark">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Personagem</th>
+                                <th scope="col">Pontua&ccedil;&atilde;o</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Naruto</td>
+                                <td>1350</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Sasuke</td>
+                                <td>1205</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>Kakashi</td>
+                                <td>1102</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td>Tomas</td>
+                                <td>Naruto</td>
+                                <td>1050</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">5</th>
+                                <td>Georgy</td>
+                                <td>Kakashi</td>
+                                <td>1030</td>
+                              </tr>
+                            </tbody>
+                          </table>
                     </div>
                 </div>
             </div>
@@ -288,7 +311,7 @@
         </div>
     </div>
 
-    <!-- end testimonial -->
+    <!-- end ranking -->
 
     <!-- cadastrar -->
     <div id="cadastrar" class="contact">
@@ -337,15 +360,6 @@
         <div class="footer ">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2>Newsletter</h2>
-                    </div>
-                    <div class="col-md-10 offset-md-1">
-                        <form class="news">
-                            <input class="newslatter" placeholder="Enter Your Email" type="text" name="Enter Your Email">
-                            <button class="submit">Subscribe</button>
-                        </form>
-                    </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                         <div class="row">
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 ">
@@ -356,45 +370,41 @@
                                         <li><a href="#"><img src="icon/lin(2).png"></a></li>
                                          <li><a href="#"><img src="icon/instagram.png"></a></li>
                                     </ul>
-                                    <a href="index.html"> <img src="images/logo.png" alt="logo"></a>
+                                    <a href="index.html"> <img src="images/Naruto-logo.jpg" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <div class="address">
-                                    <h3>Quick links</h3>
+                                    <h3>Links</h3>
                                     <ul class="Menu_footer">
                                         <li class="active"> <img src="images/3.png" alt="#"> <a href="#game">Game</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#software">Software</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#about">About</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#testimonial"> Testimonial</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#contact">Contact</a> </li>
+                                        <li><img src="images/3.png" alt="#"> <a href="#requisitos">Requisitos</a> </li>
+                                        <li><img src="images/3.png" alt="#"> <a href="#preview">Previa do jogo</a> </li>
+                                        <li><img src="images/3.png" alt="#"> <a href="#ranking">Ranking</a> </li>
+                                        <li><img src="images/3.png" alt="#"> <a href="#cadastro">Cadastro</a> </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <div class="address">
-                                    <h3>downloded</h3>
+                                    <h3>Download</h3>
                                     <ul class="Links_footer">
-                                        <li class="active"><img src="images/3.png" alt="#"> <a href="#">Lorem Ipsum </a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#">Simply random</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#">Roots in a</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#"> Piece</a> </li>
-                                        <li><img src="images/3.png" alt="#"> <a href="#">Classical</a> </li>
+                                        <li class="active"><img src="images/3.png" alt="#"> <a href="#">Game </a> </li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-6 col-sm-6 ">
                                 <div class="address">
-                                    <h3>Contact us </h3>
+                                    <h3>Entre em contato</h3>
                                     <ul class="loca">
                                         <li>
-                                            <a href="#"><img src="icon/loc.png" alt="#" /></a>London 145
-                                            <br>United Kingdom </li>
+                                            <a href="#"><img src="icon/loc.png" alt="#" /></a>São Paulo
+                                            <br>SP </li>
                                         <li>
-                                            <a href="#"><img src="icon/email.png" alt="#" /></a>demo@gmail.com </li>
+                                            <a href="#"><img src="icon/email.png" alt="#" /></a>narutinho@email.com </li>
                                         <li>
-                                            <a href="#"><img src="icon/call.png" alt="#" /></a>+12586954775 </li>
+                                            <a href="#"><img src="icon/call.png" alt="#" /></a>+1199999999 </li>
                                     </ul>
                                 </div>
                             </div>
@@ -406,7 +416,7 @@
             </div>
             <div class="copyright">
                 <div class="container">
-                    <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
+                    <p>© 2021 All Rights Reserved. <a href="https://html.design/"></a></p>
                 </div>
             </div>
             <!-- Modal AlterarSenha -->

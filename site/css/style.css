@@ -259,6 +259,10 @@
  .ul_list_info_icon ul li img {
      width: 75px;
 }
+video {
+    width: 100%;
+    height: auto;
+  }
 /*---------------------------- preloader area ----------------------------*/
  .loader_bg {
      position: fixed;
