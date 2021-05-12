@@ -7,12 +7,11 @@ $(document).ready(function () {
 });
 
 function carregaRanking() {
-    $.getJSON("php/index.php?acao=carregaRanking",
+    $.getJSON("php/index.php?acao=carregaRanking",{'consultaPontuacao':'FALSE'},
         function (retorno) {
             var html = '';
             var contador = 1;
             $.each(retorno, function (indexInArray, valueOfElement) { 
-                 console.log(valueOfElement.nome)
                  html += '<tr>'+
                             '<th scope="row">'+contador+'</th>'+
                             '<td>'+valueOfElement.nome+'</td>'+
@@ -124,7 +123,7 @@ function adicionaSessao(usuario){
                                     '<div class="card card-body" style="background-color:rgb(38, 38, 100)">'+
                                     '<button class="btn btn-warning btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#modalAlterarSenha">Alterar Senha</button>'+
                                     '<button class="btn btn-danger btn-sm" style="margin-top: 5px;" onclick="deslogar()">Deslogar</button>'+
-                                    '<button class="btn btn-primary btn-sm" style="margin-top: 5px;">Visualizar Ranking</button>'+
+                                    '<button class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="minhaPontuacao()">Minha Pontuação</button>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>');
@@ -152,6 +151,21 @@ function limparCampos(){
     $("#senhaAtual").val('');
     $("#novaSenha").val('');
     $("#confirmarNovaSenha").val('');
+}
+
+function minhaPontuacao(){
+    $.getJSON("php/index.php?acao=carregaRanking", {'consultaPontuacao':'OK'},
+        function (retorno) {
+            if(retorno == "nenhum registro"){
+                msgNoty("Nenhuma pontuação registrada, comece a jogar para pontuar.", 'info',4000,'topCenter');
+            }else{
+                $.each(retorno, function (indexInArray, valueOfElement) { 
+                    msgNoty("Sua maior pontuação é: " + valueOfElement.pontuacao + ' pontos', 'info',5000, 'topCenter')
+                });
+               
+            }
+        }
+    );
 }
 
 function msgNoty(msg, tipo, tempo, layout){

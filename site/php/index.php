@@ -9,13 +9,25 @@ if($req == 'cadastrar'){
 }else if ($req == 'alterarSenha'){
     alterarSenha();
 }else if($req == 'carregaRanking'){
-    carregaRanking();
+    if($_GET['consultaPontuacao'] == 'OK'){
+        session_start();
+        carregaRanking($_SESSION["usuario"]);
+    }else{
+        carregaRanking("");
+    }
 }
 
-function carregaRanking(){
+function carregaRanking($login){
+    $where = ' where 1 = 1 ';
+    $order = ' order by r.pontuacao desc LIMIT 5 ';
+    if($login){
+        $where = "$where and login = '".$login."'";
+    }
     $pdo = Banco::conectar();
 
-    $sql = "select u.nome, r.pontuacao from ranking r LEFT JOIN usuarios u on u.id = r.id_usuario order by r.pontuacao desc LIMIT 5";
+    $sql = "select u.nome, r.pontuacao from ranking r LEFT JOIN usuarios u on u.id = r.id_usuario";
+    $sql = "$sql $where $order";
+   
     $q = $pdo->query($sql);
     $data = $q->fetchAll(PDO::FETCH_ASSOC);
     
@@ -52,9 +64,9 @@ function login(){
 }
 
 function alterarSenha(){
-    $senhaAtual = $_POST['senhaAtual'];
-    $novaSenha = $_POST['novaSenha'];
-    $confirmarNovaSenha = $_POST['confirmarNovaSenha'];
+    $senhaAtual = md5($_POST['senhaAtual']);
+    $novaSenha = md5($_POST['novaSenha']);
+    $confirmarNovaSenha = md5($_POST['confirmarNovaSenha']);
     
 
     if ($novaSenha != $confirmarNovaSenha){
@@ -64,12 +76,12 @@ function alterarSenha(){
         session_start();
         $pdo = Banco::conectar();
         
-        $sql = "SELECT * FROM $dbNome".".usuarios where login = " . "'".$_SESSION["usuario"]."'" . "and senha = " . "'".$senhaAtual."'";
+        $sql = "SELECT * FROM usuarios where login = " . "'".$_SESSION["usuario"]."'" . "and senha = " . "'".$senhaAtual."'";
         $q = $pdo->query($sql);
         $data = $q->fetchAll(PDO::FETCH_ASSOC);
 
         if ($data){
-            $sql = "UPDATE $dbNome".".usuarios set senha = ? WHERE login = ?";
+            $sql = "UPDATE usuarios set senha = ? WHERE login = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($novaSenha, $_SESSION["usuario"]));
             echo json_encode("OK");
