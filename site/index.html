@@ -59,7 +59,7 @@
                                 <li id="liLogin">
                                     <img src="images/load.gif" style="width: 25px;height: 25px; display: none;" id="loadLogin">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="text" id="loginUser" class="form-control" placeholder="Login"  aria-describedby="basic-addon2">
+                                        <input type="text" id="loginUser" class="form-control" placeholder="Email"  aria-describedby="basic-addon2">
                                         <input type="password" id="senhaUser" class="form-control" placeholder="Senha" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-danger" onclick="login()">Login</button> 
@@ -100,7 +100,7 @@
                                 <div class="text-bg">
                                     <h1>O melhor<br>jogo 2D</h1>
                                     <span>Venha se aventurar, e mostre ser o melhor ninja.<br> Não perca tempo baixe agora!</span>
-                                    <a onclick="downloadGame()" target="_blank">download</a>
+                                    <a href="https://github.com/wmatossouza/projeto-php/raw/main/jogo/naruto.exe">download</a>
                                 </div>
                             </div>
                         </div>
@@ -127,16 +127,15 @@
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div class="two-box">
-                                <figure><img src="images/our-image1.jpg" alt="#" /></figure>
+                                <figure><img src="images/jogo1.png" alt="#" /></figure>
                             </div>
                         </div>
 
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
 
                             <div class="Games">
-                                <h3>Escolha seu personagem</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                                <a href="#">Free Download</a>
+                                <h3>Comece essa jornada na pele do Naruto</h3>
+                                <p>Utilize suas habilidades ninja para derrotar seus oponentes e coletar o máximo de moedas possível. </p>
                             </div>
                         </div>
                     </div>
@@ -146,16 +145,15 @@
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div class="two-box">
-                                <figure><img src="images/our-image2.jpg" alt="#" /></figure>
+                                <figure><img src="images/jogo2.png" alt="#" /></figure>
                             </div>
                         </div>
 
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
 
                             <div class="Games">
-                                <h3>Sanke</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                                <a href="#">Free Download</a>
+                                <h3>Melhore no Ranking</h3>
+                                <p>Sua Pontuação será computada em um ranking, onde apenas os melhores ficaram registrados no site</p>
                             </div>
                         </div>
                     </div>
@@ -165,16 +163,15 @@
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div class="two-box">
-                                <figure><img src="images/our-image3.jpg" alt="#" /></figure>
+                                <figure><img src="images/jogo3.png" alt="#" /></figure>
                             </div>
                         </div>
 
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
 
                             <div class="Games">
-                                <h3>Cricket</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </p>
-                                <a href="#">Free Download</a>
+                                <h3>Busque a vitória</h3>
+                                <p>Somente os melhores conseguirão alcançar a vitória e conseguir a maior pontuação.</p>
                             </div>
                         </div>
                     </div>
@@ -206,7 +203,7 @@
                  </div>
                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
                      <div class="box_text" style="text-align: justify;">
-                         <p>Por se tratar de um jogo na plataforma 2D, não será necessário ter uma máquina potente.</p><br>
+                        <br><br><br><br>
                          <p>Requisitos Mínimos:<br>
                             SO: Win 2000, XP, Vista, 7, 8, 10<br>
                             Processador: 1 GHZ<br>
@@ -236,7 +233,7 @@
                     <div class="about-box">
                         <!-- <figure><img src="images/about.jpg" alt="#" /></figure> -->
                         <video controls autoplay style="max-width: 720;max-height: 480px;">
-                            <source src="video/jogo.mp4" type="video/mp4" >
+                            <source src="video/jogovideo.mp4" type="video/mp4" >
                           Your browser does not support the video tag.
                           </video>
                         <p> Derrote seus oponentes.
@@ -267,11 +264,11 @@
                               <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Personagem</th>
+                                <!-- <th scope="col">Personagem</th> -->
                                 <th scope="col">Pontua&ccedil;&atilde;o</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tblRanking">
                               <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
@@ -389,7 +386,7 @@
                                 <div class="address">
                                     <h3>Download</h3>
                                     <ul class="Links_footer">
-                                        <li class="active"><img src="images/3.png" alt="#"> <a href="#">Game </a> </li>
+                                        <li class="active"><img src="images/3.png" alt="#"> <a href="https://github.com/wmatossouza/projeto-php/raw/main/jogo/naruto.exe">Game </a> </li>
                                     </ul>
                                 </div>
                             </div>

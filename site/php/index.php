@@ -8,15 +8,33 @@ if($req == 'cadastrar'){
     login();
 }else if ($req == 'alterarSenha'){
     alterarSenha();
+}else if($req == 'carregaRanking'){
+    carregaRanking();
+}
+
+function carregaRanking(){
+    $pdo = Banco::conectar();
+
+    $sql = "select u.nome, r.pontuacao from ranking r LEFT JOIN usuarios u on u.id = r.id_usuario order by r.pontuacao desc LIMIT 5";
+    $q = $pdo->query($sql);
+    $data = $q->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($data){
+        echo json_encode($data);
+    }else{
+        echo json_encode("nenhum registro");
+    }
+
+    Banco::desconectar();
 }
 
 function login(){
     $pdo = Banco::conectar();
 
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
+    $email = $_POST['email'];
+    $senha = md5($_POST['senha']);
 
-    $sql = "SELECT * FROM $dbNome".".usuarios where login = " . "'".$login."'" . "and senha = " . "'".$senha."'"; //where login = ? and senha = ?';
+    $sql = "SELECT * FROM $dbNome".".usuarios where email = " . "'".$email."'" . "and senha = " . "'".$senha."'"; //where login = ? and senha = ?';
     $q = $pdo->query($sql);
     $data = $q->fetchAll(PDO::FETCH_ASSOC);
     
@@ -67,8 +85,8 @@ function cadastrar(){
     $sobrenome = $_POST['sobrenome'];
     $email = $_POST['email'];
     $login = $_POST['login'];
-    $senha = $_POST['senha'];
-    $confirmarSenha = $_POST['confirmarSenha'];
+    $senha = md5($_POST['senha']);
+    $confirmarSenha = md5($_POST['confirmarSenha']);
 
     if ($senha != $confirmarSenha){
         echo json_encode('senhaDiferente');

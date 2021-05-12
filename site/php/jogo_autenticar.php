@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
 $email = $_POST["email"];
-$senha = $_POST["senha"];
+$senha = md5($_POST["senha"]);
 
 $pdo = Banco::conectar();
 

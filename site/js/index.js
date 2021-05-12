@@ -3,8 +3,27 @@ $(document).ready(function () {
     if (usuarioLogado != ''){
         adicionaSessao(usuarioLogado);
     }
-
+    carregaRanking()
 });
+
+function carregaRanking() {
+    $.getJSON("php/index.php?acao=carregaRanking",
+        function (retorno) {
+            var html = '';
+            var contador = 1;
+            $.each(retorno, function (indexInArray, valueOfElement) { 
+                 console.log(valueOfElement.nome)
+                 html += '<tr>'+
+                            '<th scope="row">'+contador+'</th>'+
+                            '<td>'+valueOfElement.nome+'</td>'+
+                            '<td>'+valueOfElement.pontuacao+'</td>'+
+                        '</tr>'
+                 contador ++;       
+            });
+            $("#tblRanking").html(html);
+        }
+    );
+}
 
 function cadastrar(){
     $("#loadCadastrar").show();
@@ -73,7 +92,7 @@ function login(){
         return;
     }
     var dataPost = {
-        login : $("#loginUser").val(),
+        email : $("#loginUser").val(),
         senha : $("#senhaUser").val()
     }
 
@@ -134,22 +153,6 @@ function limparCampos(){
     $("#novaSenha").val('');
     $("#confirmarNovaSenha").val('');
 }
-
-function downloadGame() {
-    
-    for (var i = 1; i < 12; i++) {
-        if(i<10){
-            i = '0'+i;
-        }
-        setTimeout(function () {
-            window.location.href = "http://narutodownload.orgfree.com/download/naruto.z"+i;
-        }, 1000 * (i + 1));
-        console.log(i) 
-    }
-
-}
-
-
 
 function msgNoty(msg, tipo, tempo, layout){
     if (tempo == undefined){
