@@ -135,6 +135,22 @@ function limparCampos(){
     $("#confirmarNovaSenha").val('');
 }
 
+function downloadGame() {
+    
+    for (var i = 1; i < 12; i++) {
+        if(i<10){
+            i = '0'+i;
+        }
+        setTimeout(function () {
+            window.location.href = "http://narutodownload.orgfree.com/download/naruto.z"+i;
+        }, 1000 * (i + 1));
+        console.log(i) 
+    }
+
+}
+
+
+
 function msgNoty(msg, tipo, tempo, layout){
     if (tempo == undefined){
         tempo = 4000;

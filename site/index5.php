@@ -1,5 +1,8 @@
 <?php
 
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+
     $dsn = "mysql:host=db;dbname=phprs";
     $dbuser = "root";
     $dbpass = "phprs";
