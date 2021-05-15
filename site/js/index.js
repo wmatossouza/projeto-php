@@ -133,7 +133,7 @@ function adicionaSessao(usuario){
 function deslogar(){
     sessionStorage.setItem('usuario', '');
     $("#liLogin").html('<div class="input-group input-group-sm mb-3">'+
-                    '<input type="text" id="loginUser" class="form-control" placeholder="Login"  aria-describedby="basic-addon2">'+
+                    '<input type="text" id="loginUser" class="form-control" placeholder="Email"  aria-describedby="basic-addon2">'+
                     '<input type="password" id="senhaUser" class="form-control" placeholder="Senha" aria-describedby="basic-addon2">'+
                     '<div class="input-group-append">'+
                         '<button class="btn btn-danger" onclick="login()">Login</button>'+
