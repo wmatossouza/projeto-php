@@ -8,7 +8,11 @@ class Banco
     private static $dbUsuario = 'root';
     private static $dbSenha = 'phprs';
 
-
+    //BANCO PRODUÇÂO
+    // private static $dbNome = '3491651_jogobd';
+    // private static $dbHost = 'fdb22.awardspace.net;port=3306';
+    // private static $dbUsuario = '3491651_jogobd';
+    // private static $dbSenha = 'b^__!%^A8-J8]MoQ';
 
     private static $cont = null;
     
