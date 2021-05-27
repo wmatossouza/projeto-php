@@ -15,6 +15,7 @@ function carregaRanking() {
                  html += '<tr>'+
                             '<th scope="row">'+contador+'</th>'+
                             '<td>'+valueOfElement.nome+'</td>'+
+                            '<td>'+valueOfElement.descricao+'</td>'+
                             '<td>'+valueOfElement.pontuacao+'</td>'+
                         '</tr>'
                  contador ++;       
