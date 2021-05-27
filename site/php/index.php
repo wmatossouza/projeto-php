@@ -29,7 +29,7 @@ function carregaRanking($login){
     }
     $pdo = Banco::conectar();
 
-    $sql = "select u.id, u.nome, r.pontuacao from ranking r LEFT JOIN usuarios u on u.id = r.id_usuario";
+    $sql = "select u.id, u.nome, r.pontuacao, p.descricao from ranking r LEFT JOIN usuarios u on u.id = r.id_usuario INNER JOIN personagens p on p.chPersonagem = r.chPersonagem";
     $sql = "$sql $where $order";
    
     $q = $pdo->query($sql);
